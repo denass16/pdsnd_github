@@ -174,9 +174,12 @@ def user_stats(df, city):
 
 def view_raw(df):
     """Display 5 rows of raw data"""
+
+    #initialization to first display first 5 lines of raw data.
     begin_view = 0
     end_view = 5
-    view = 'y'      #initialize
+    view = 'y'
+
     msg_view1 = "Would you like to view 5 lines of raw data? (Y/N)..."
     msg_view2 = "Would you like to view the next 5 lines of raw data? (Y/N)..."
     while view.lower() == 'y':
