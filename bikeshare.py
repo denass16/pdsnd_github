@@ -48,8 +48,8 @@ def get_filters():
     # Get user input for day of week (all, monday, tuesday, ... sunday)
     filt_option_day = input('would you like to filter by day? (Y/N): ').lower()
     if filt_option_day == 'y':
-        msgday1 = 'Which day will you like to filter by? Enter Monday, Tuesday,..Sunday: '
-        msgday2 = 'Invalid entry. Try again: '
+        msgday1 = 'Which day will you like to filter by? Enter Monday, Tuesday,..Sunday: ' # Message displayed on first trial
+        msgday2 = 'Invalid entry. Try again: ' # Message displayed on subsequent trials
         while True:
             day = input(msgday1).lower()
             if day in ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']:
@@ -180,8 +180,8 @@ def view_raw(df):
     end_view = 5
     view = 'y'
 
-    msg_view1 = "Would you like to view 5 lines of raw data? (Y/N)..."
-    msg_view2 = "Would you like to view the next 5 lines of raw data? (Y/N)..."
+    msg_view1 = "Would you like to view 5 lines of raw data? (Y/N)..." # Message displayed at first time
+    msg_view2 = "Would you like to view the next 5 lines of raw data? (Y/N)..." # Message displayed after first 5 lines of date
     while view.lower() == 'y':
         view = input(msg_view1)
         if view.lower() == "y":
