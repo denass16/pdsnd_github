@@ -15,5 +15,5 @@ washington.csv\
 README.md
 
 ### Credits
-https://gist.github.com/shaunlebron/746476e6e7a4d698b373
-https://wingware.com/doc/intro/tutorial-refactoring
+1. https://gist.github.com/shaunlebron/746476e6e7a4d698b373
+2. https://wingware.com/doc/intro/tutorial-refactoring
