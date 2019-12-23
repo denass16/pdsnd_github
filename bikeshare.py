@@ -21,24 +21,22 @@ def get_filters():
     day = 0      #initialize day
 
     msgcity1 = 'Would you like to see data from Chicago, New York City or Washington? '
-    msgcity2 = 'Invalid entry. You can only enter Chicago, New York or Washington. Try again...'
     while city != 'chicago' and city != 'new york city' and city != 'washington':
         city = input(msgcity1).lower()
         if city == 'new york':
             city = 'new york city'
-        msgcity1 = msgcity2
+        msgcity1 = 'Invalid entry. You can only enter Chicago, New York or Washington. Try again...'
 
     # Get user input for month (all, january, february, ... , june)
     filt_option_month = input('would you like to filter by month? (Y/N): ').lower()
     if filt_option_month == 'y':
         msgmonth1 = 'Which month will you like to filter by? Enter month number 1 - 6: '
-        msgmonth2 = 'Invalid entry. Enter month number 1 - 6: '
         while month<1 or month>6:
             try:
                 month = int(input(msgmonth1))
-                msgmonth1 = msgmonth2
+                msgmonth1 = 'Invalid entry. Enter month number 1 - 6: '
             except ValueError:
-                msgmonth1 = msgmonth2
+                msgmonth1 = 'Invalid entry. Enter month number 1 - 6: '
                 continue
     else:
         if filt_option_month.lower() != 'n':
@@ -48,13 +46,12 @@ def get_filters():
     # Get user input for day of week (all, monday, tuesday, ... sunday)
     filt_option_day = input('would you like to filter by day? (Y/N): ').lower()
     if filt_option_day == 'y':
-        msgday1 = 'Which day will you like to filter by? Enter Monday, Tuesday,..Sunday: ' # Message displayed on first trial
-        msgday2 = 'Invalid entry. Try again: ' # Message displayed on subsequent trials
+        msgday1 = 'Which day will you like to filter by? Enter Monday, Tuesday,..Sunday: '
         while True:
             day = input(msgday1).lower()
             if day in ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']:
                 break
-            msgday1 = msgday2
+            msgday1 = 'Invalid entry. Try again: '
 
     print('-'*40)
     return city, month, day, filt_option_month, filt_option_day
@@ -178,17 +175,15 @@ def view_raw(df):
     #initialization to first display first 5 lines of raw data.
     begin_view = 0
     end_view = 5
-    view = 'y'
-
-    msg_view1 = "Would you like to view 5 lines of raw data? (Y/N)..." # Message displayed at first time
-    msg_view2 = "Would you like to view the next 5 lines of raw data? (Y/N)..." # Message displayed after first 5 lines of date
+    view = 'y'      #initialize
+    msg_view1 = "Would you like to view 5 lines of raw data? (Y/N)..."
     while view.lower() == 'y':
         view = input(msg_view1)
         if view.lower() == "y":
             print(df.iloc[begin_view:end_view, :])
             begin_view +=5
             end_view +=5
-            msg_view1 = msg_view2
+            msg_view1 = "Would you like to view the next 5 lines of raw data? (Y/N)..."
         else:
             break
 
