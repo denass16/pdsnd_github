@@ -31,13 +31,12 @@ def get_filters():
     filt_option_month = input('would you like to filter by month? (Y/N): ').lower()
     if filt_option_month == 'y':
         msgmonth1 = 'Which month will you like to filter by? Enter month number 1 - 6: '
-        msgmonth2 = 'Invalid entry. Enter month number 1 - 6: '
         while month<1 or month>6:
             try:
                 month = int(input(msgmonth1))
                 msgmonth1 = msgmonth2
             except ValueError:
-                msgmonth1 = msgmonth2
+                msgmonth1 = 'Invalid entry. Enter month number 1 - 6: '
                 continue
     else:
         if filt_option_month.lower() != 'n':
