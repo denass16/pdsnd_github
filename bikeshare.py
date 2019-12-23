@@ -34,7 +34,7 @@ def get_filters():
         while month<1 or month>6:
             try:
                 month = int(input(msgmonth1))
-                msgmonth1 = msgmonth2
+                msgmonth1 = 'Invalid entry. Enter month number 1 - 6: '
             except ValueError:
                 msgmonth1 = 'Invalid entry. Enter month number 1 - 6: '
                 continue
