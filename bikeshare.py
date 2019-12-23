@@ -19,14 +19,13 @@ def get_filters():
     city = ''    #initiatize city
     month = 0    #initialize month
     day = 0      #initialize day
-    
+
     msgcity1 = 'Would you like to see data from Chicago, New York City or Washington? '
-    msgcity2 = 'Invalid entry. You can only enter Chicago, New York or Washington. Try again...'
     while city != 'chicago' and city != 'new york city' and city != 'washington':
         city = input(msgcity1).lower()
         if city == 'new york':
             city = 'new york city'
-        msgcity1 = msgcity2
+        msgcity1 = 'Invalid entry. You can only enter Chicago, New York or Washington. Try again...'
 
     # TO DO: get user input for month (all, january, february, ... , june)
     filt_option_month = input('would you like to filter by month? (Y/N): ').lower()
@@ -55,7 +54,7 @@ def get_filters():
             if day in ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']:
                 break
             msgday1 = msgday2
-            
+
     print('-'*40)
     return city, month, day, filt_option_month, filt_option_day
 
@@ -75,7 +74,7 @@ def load_data(city, month, day, filt_option_month, filt_option_day):
     df['Start Time'] = pd.to_datetime(df['Start Time'])
     df['month'] = df['Start Time'].dt.month
     df['day_of_week'] = df['Start Time'].dt.weekday_name
-    
+
     if filt_option_month == 'y':
         df = df[df['month'] == month]
     if filt_option_day == 'y':
@@ -98,7 +97,7 @@ def time_stats(df):
     print('\nMost frequent day of travel is: ', pd.Series(df['day_of_week']).mode()[0])
 
     # TO DO: display the most common start hour
-    
+
     df['Start Hour'] = (df['Start Time']).dt.hour
     print('\nMost frequent hour of travel is: {}:00hrs '.format(pd.Series(df['Start Hour']).mode()[0]))
 
@@ -106,7 +105,7 @@ def time_stats(df):
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
-    
+
 def station_stats(df):
     """Displays statistics on the most popular stations and trip."""
 
@@ -158,8 +157,8 @@ def user_stats(df, city):
 
     # TO DO: Display counts of gender
     if city.lower() == 'chicago' or city.lower() == 'new york city':
-        print('\nCounts of user gender\n',df['Gender'].value_counts())      
-    
+        print('\nCounts of user gender\n',df['Gender'].value_counts())
+
     # TO DO: Display earliest, most recent, and most common year of birth
         earliest_yob = int(pd.Series(df['Birth Year']).min())
         most_recent_yob = int(pd.Series(df['Birth Year']).max())
@@ -170,8 +169,8 @@ def user_stats(df, city):
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
-    
-    
+
+
 def view_raw(df):
     """Display 5 rows of raw data"""
     begin_view = 0
@@ -188,7 +187,7 @@ def view_raw(df):
             msg_view1 = msg_view2
         else:
             break
-            
+
 
 def main():
     while True:
@@ -208,4 +207,3 @@ def main():
 
 if __name__ == "__main__":
 	main()
-
