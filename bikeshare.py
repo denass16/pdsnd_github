@@ -48,12 +48,11 @@ def get_filters():
     filt_option_day = input('would you like to filter by day? (Y/N): ').lower()
     if filt_option_day == 'y':
         msgday1 = 'Which day will you like to filter by? Enter Monday, Tuesday,..Sunday: '
-        msgday2 = 'Invalid entry. Try again: '
         while True:
             day = input(msgday1).lower()
             if day in ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']:
                 break
-            msgday1 = msgday2
+            msgday1 = 'Invalid entry. Try again: '
 
     print('-'*40)
     return city, month, day, filt_option_month, filt_option_day
@@ -177,14 +176,13 @@ def view_raw(df):
     end_view = 5
     view = 'y'      #initialize
     msg_view1 = "Would you like to view 5 lines of raw data? (Y/N)..."
-    msg_view2 = "Would you like to view the next 5 lines of raw data? (Y/N)..."
     while view.lower() == 'y':
         view = input(msg_view1)
         if view.lower() == "y":
             print(df.iloc[begin_view:end_view, :])
             begin_view +=5
             end_view +=5
-            msg_view1 = msg_view2
+            msg_view1 = "Would you like to view the next 5 lines of raw data? (Y/N)..."
         else:
             break
 
